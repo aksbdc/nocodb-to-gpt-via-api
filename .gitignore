@@ -25,3 +25,5 @@ go.work.sum
 .env
 
 data/
+
+__pycache__/
