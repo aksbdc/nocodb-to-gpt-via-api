@@ -1,9 +1,11 @@
 import requests
+import torch
+
 
 URL = "https://app.nocodb.com/api"
 PARAMETERS = {
     "accept: application/json",
-    "user-agent: aksbdc/nocodb-to-gpt-via-api/0.0.1",
+    "user-agent: aksbdc/nocodb-to-gpt-via-api/0.0.3",
 }
 
 def fetch_data():
@@ -17,11 +19,20 @@ def fetch_data():
     
     return response.json()
 
+def system_diagnostics():
+    """
+    TODO: GPU support verification.
+    """
+    sample = torch.rand(42, 907)
+    print(sample)
+
 
 def main():
     print(">> Hello from nocodb-to-gpt-via-api!")
     print(">> This is a simple script that fetches data from an instance via the API.")
     print(">> The data is then used to train a GPT model.")
+
+    # system_diagnostics()
 
 
 if __name__ == "__main__":
