@@ -6,8 +6,9 @@
 > This project utilizes [`uv`](https://docs.astral.sh/uv/) for module management.
 > You can find installation instructions via [relevant operating system](https://docs.astral.sh/uv/getting-started/installation/) documentation.
 
-- Clone repository: `gh repo clone aksbdc/nocodb-to-gpt-via-api`
-- Source navigation: `cd nocodb-to-gpt-via-api`
+- Clone: `gh repo clone aksbdc/nocodb-to-gpt-via-api`
+- Source: `cd nocodb-to-gpt-via-api`
+- Build: [`make`](https://www.gnu.org/software/make/)
 
 ### Branch Management
 
@@ -15,20 +16,16 @@
 - `staging` → testing changes to be merged into `main`.
 - `dev` → testing changes to be merged into `staging`.
 
-## Directory Structure
+## [Architecture Diagram](https://github.com/aksbdc/nocodb-to-gpt-via-api/wiki)
 
-## Architecture Diagram
-
-## User Stories
-
-#### Scenario Planning
+## Scenario Planning
 
 1. [Small Business Owner](https://aksbdc.org/success-stories/)
 1. [Expert Advisor](https://aksbdc.org/about/advisors/)
 1. [General Public](https://alaska.gov/)
 
-### System Benchmarking
+### [System Benchmarking](docs/NOTES.md)
 
-### Experimental Design
+### [Experimental Design](Makefile)
 
-### Research Question
+### [Research Question](docs/NOTES.md)
