@@ -21,6 +21,3 @@ debug:
 
 test:
 	pytest
-
-
-
