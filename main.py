@@ -1,3 +1,6 @@
+from ollama import chat
+from ollama import ChatResponse
+
 import requests
 import torch
 
@@ -8,6 +11,7 @@ PARAMETERS = {
     "user-agent: aksbdc/nocodb-to-gpt-via-api/0.0.3",
 }
 
+
 def fetch_data():
     """
     Retrieve data from the instance.
@@ -16,8 +20,9 @@ def fetch_data():
 
     if response.status_code != 200:
         raise Exception(f"Failed to fetch data: {response.status_code}")
-    
+
     return response.json()
+
 
 def system_diagnostics():
     """
