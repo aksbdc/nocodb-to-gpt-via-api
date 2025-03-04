@@ -1,6 +1,6 @@
 [project]
 name = "nocodb-to-gpt-via-api"
-version = "0.0.4"
+version = "0.1.0"
 description = "Alaska Small Business Development Center"
 readme = "README.md"
 requires-python = ">=3.11"
