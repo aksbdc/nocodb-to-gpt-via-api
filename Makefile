@@ -20,4 +20,4 @@ debug:
 	ping aksbdc.org
 
 test:
-	pytest
+	cat data/response.json | llm -s "Explain these data."
