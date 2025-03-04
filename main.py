@@ -2,6 +2,7 @@ from ollama import chat
 from ollama import ChatResponse
 from dotenv import load_dotenv
 import requests
+import json
 import os
 
 load_dotenv()
@@ -14,6 +15,7 @@ LLM = "llama3.2"
 QUERY = """
 What are the main jurisdictional funding sources in Alaska?
 """
+OUTPUT = "data/response.json"
 
 URL = f"https://app.nocodb.com/api/v2/tables/{table_name}/records"
 
@@ -51,17 +53,37 @@ def sample_usage(question):
     return output.json()
 
 
-def fetch_data():
+def fetch_data(location):
     """
     Retrieve data from the instance.
     """
-    response = requests.request("GET", URL, headers=HEADERS, params=PARAMETERS)
+    try:
+        response = requests.request("GET", URL, headers=HEADERS, params=PARAMETERS)
 
-    return response.json()
+        response.raise_for_status()
+
+        data = response.json()
+
+        os.makedirs(os.path.dirname(location), exist_ok=True)
+
+        with open(location, "w", encoding="utf-8") as file:
+            json.dump(data, file, ensure_ascii=False, indent=4)
+
+        print(f">> Captured output: {location}")
+
+    except requests.exceptions.RequestException as e:
+        print(f"[!] Error w/ API request: {e}")
+
+    except ValueError as e:
+        print(f"[?] Error w/ JSON response parsing: {e}")
+
+    except IOError as e:
+        print(f"[*] Error w/ file write: {e}")
 
 
 def main():
     project_description()
+    fetch_data(OUTPUT)
 
 
 if __name__ == "__main__":
