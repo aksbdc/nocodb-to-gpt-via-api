@@ -1,10 +1,15 @@
 [project]
 name = "nocodb-to-gpt-via-api"
-version = "0.0.3"
+version = "0.0.4"
 description = "Alaska Small Business Development Center"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "black>=25.1.0",
+    "numpy>=2.2.3",
+    "ollama>=0.4.7",
+    "requests>=2.32.3",
+]
 
 [tool.uv.workspace]
 members = ["example-app"]
