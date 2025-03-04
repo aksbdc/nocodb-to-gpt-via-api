@@ -2,7 +2,6 @@ from ollama import chat
 from ollama import ChatResponse
 
 import requests
-import torch
 import time
 
 LLM = "llama3.2"
@@ -48,16 +47,7 @@ def fetch_data():
     return response.json()
 
 
-def system_diagnostics():
-    """
-    TODO: GPU support verification.
-    """
-    sample = torch.rand(42, 907)
-    return sample
-
-
 def main():
-    system_diagnostics()
     project_description()
     length = 8
     print('-' * length)
@@ -65,6 +55,7 @@ def main():
     start = time.time()
     sample_usage("What are the main jurisdictional funding sources in Alaska?")
     end = time.time()
+    
     elapsed = end - start
 
     print(f"\n>> ⏱️ Response Time: {elapsed}s")
