@@ -1,15 +1,31 @@
 from ollama import chat
 from ollama import ChatResponse
-
+from dotenv import load_dotenv
 import requests
-import time
+import json
+import os
+
+load_dotenv()
+
+xc_token = os.getenv("API_KEY")
+table_name = os.getenv("TABLE_NAME")
+view_id = os.getenv("DEFAULT_VIEW")
 
 LLM = "llama3.2"
-URL = "https://app.nocodb.com/api"
-PARAMETERS = {
-    "accept: application/json",
-    "user-agent: aksbdc/nocodb-to-gpt-via-api/0.0.3",
+QUERY = """
+What are the main jurisdictional funding sources in Alaska?
+"""
+OUTPUT = "data/response.json"
+
+URL = f"https://app.nocodb.com/api/v2/tables/{table_name}/records"
+
+HEADERS = {
+    "accept": "application/json",
+    "user-agent": "aksbdc/nocodb-to-gpt-via-api/0.0.4",
+    "xc-token": xc_token,
 }
+
+PARAMETERS = {"offset": "0", "limit": "25", "where": "", "viewID": view_id}
 
 
 def project_description():
@@ -25,40 +41,49 @@ def sample_usage(question):
     """
     Benchmark query analysis from research notes.
     """
-    response: ChatResponse = chat(model=LLM, messages=[
-        {
-            'role': 'user',
-            'content': question
-        },
-    ])
+    response: ChatResponse = chat(
+        model=LLM,
+        messages=[
+            {"role": "user", "content": question},
+        ],
+    )
+
     output = response.message.content
-    print(output)
+
+    return output.json()
 
 
-def fetch_data():
+def fetch_data(location):
     """
     Retrieve data from the instance.
     """
-    response = requests.get(URL, headers=PARAMETERS)
+    try:
+        response = requests.request("GET", URL, headers=HEADERS, params=PARAMETERS)
 
-    if response.status_code != 200:
-        raise Exception(f"Failed to fetch data: {response.status_code}")
+        response.raise_for_status()
 
-    return response.json()
+        data = response.json()
+
+        os.makedirs(os.path.dirname(location), exist_ok=True)
+
+        with open(location, "w", encoding="utf-8") as file:
+            json.dump(data, file, ensure_ascii=False, indent=4)
+
+        print(f">> Captured output: {location}")
+
+    except requests.exceptions.RequestException as e:
+        print(f"[!] Error w/ API request: {e}")
+
+    except ValueError as e:
+        print(f"[?] Error w/ JSON response parsing: {e}")
+
+    except IOError as e:
+        print(f"[*] Error w/ file write: {e}")
 
 
 def main():
     project_description()
-    length = 8
-    print('-' * length)
-
-    start = time.time()
-    sample_usage("What are the main jurisdictional funding sources in Alaska?")
-    end = time.time()
-    
-    elapsed = end - start
-
-    print(f"\n>> ⏱️ Response Time: {elapsed}s")
+    fetch_data(OUTPUT)
 
 
 if __name__ == "__main__":
