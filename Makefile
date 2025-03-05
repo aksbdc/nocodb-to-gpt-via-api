@@ -19,5 +19,8 @@ update:
 debug:
 	ping aksbdc.org
 
+local:
+	llm -m llama3.2:latest 'What are the main jurisdictional funding sources in Alaska?'
+
 test:
 	cat data/response.json | llm -s "What loans do you have available for startups?"
