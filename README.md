@@ -13,7 +13,7 @@
 ### Branch Management
 
 - `main` → production ready environment.
-- `staging` → testing changes to be merged into `main`.
+- `staging` → released changes to be merged into `main`.
 - `dev` → testing changes to be merged into `staging`.
 
 ## [Architecture Diagram](https://github.com/aksbdc/nocodb-to-gpt-via-api/wiki)
