@@ -1,5 +1,5 @@
 BIN_NAME=nocodb-to-gpt-via-api
-BIN_VERSION=0.0.4
+BIN_VERSION=0.1.1
 BIN_DATE=$(shell date +%FT%T%z)
 
 # Advisor Tooling @ Alaska SBDC
@@ -20,4 +20,4 @@ debug:
 	ping aksbdc.org
 
 test:
-	cat data/response.json | llm -s "Explain these data."
+	cat data/response.json | llm -s "What loans do you have available for startups?"
