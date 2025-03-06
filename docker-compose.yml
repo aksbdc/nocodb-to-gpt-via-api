@@ -1,6 +1,6 @@
 services:
   openwebui:
-    image: ghcr.io/open-webui/open-webui:cuda
+    image: ghcr.io/open-webui/open-webui:v0.5.20-cuda
     ports:
       - "3000:8080"
     volumes:
