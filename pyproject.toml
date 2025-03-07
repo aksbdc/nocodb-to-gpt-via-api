@@ -15,4 +15,4 @@ dependencies = [
 ]
 
 [tool.uv.workspace]
-members = ["example-app"]
+members = ["aksbdc-example-app"]
