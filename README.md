@@ -24,8 +24,8 @@
 1. [Expert Advisor](https://aksbdc.org/about/advisors/)
 1. [General Public](https://alaska.gov/)
 
-### [System Benchmarking](docs/NOTES.md)
+### [System Benchmarking](docs/ANALYSIS.md)
 
-### [Experimental Design](Makefile)
+### [Experimental Design](docs/ARCHITECTURE.md)
 
 ### [Research Question](docs/NOTES.md)

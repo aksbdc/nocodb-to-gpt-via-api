@@ -21,7 +21,7 @@ URL = f"https://app.nocodb.com/api/v2/tables/{table_name}/records"
 
 HEADERS = {
     "accept": "application/json",
-    "user-agent": "aksbdc/nocodb-to-gpt-via-api/0.1.0",
+    "user-agent": "aksbdc/nocodb-to-gpt-via-api/0.1.1",
     "xc-token": xc_token,
 }
 
