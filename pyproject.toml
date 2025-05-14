@@ -11,6 +11,7 @@ dependencies = [
     "numpy>=2.2.3",
     "ollama>=0.4.7",
     "openapi-schema-validator>=0.6.3",
+    "openapi-spec-validator>=0.7.1",
     "python-dotenv>=1.0.1",
     "requests>=2.32.3",
 ]

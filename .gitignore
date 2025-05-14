@@ -175,3 +175,6 @@ cython_debug/
 
 # Output
 /data
+
+# Schema Validation
+openapi.yaml

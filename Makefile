@@ -21,3 +21,6 @@ debug:
 
 test:
 	cat data/response.json | llm -s "Explain these data."
+
+valid:
+	uv run openapi-spec-validator openapi.yaml

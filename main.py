@@ -1,3 +1,4 @@
+from openapi_schema_validator import validate
 from ollama import chat
 from ollama import ChatResponse
 from dotenv import load_dotenv
