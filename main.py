@@ -49,10 +49,6 @@ def sample_usage(question):
         ],
     )
 
-    output = response.message.content
-
-    return output.json()
-
 
 def fetch_data(location):
     """

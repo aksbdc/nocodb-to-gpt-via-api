@@ -12,4 +12,4 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v3
       - name: Run a script
-        run: echo "Hello, Alaska Time!"
+        run: echo "Batch Processing Task Executed at $(date)"
