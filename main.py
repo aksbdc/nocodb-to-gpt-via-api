@@ -1,3 +1,4 @@
+from openapi_schema_validator import validate
 from ollama import chat
 from ollama import ChatResponse
 from dotenv import load_dotenv
@@ -11,7 +12,7 @@ xc_token = os.getenv("API_KEY")
 table_name = os.getenv("TABLE_NAME")
 view_id = os.getenv("DEFAULT_VIEW")
 
-LLM = "llama3.2"
+LLM = ""
 QUERY = """
 What are the main jurisdictional funding sources in Alaska?
 """
@@ -21,7 +22,7 @@ URL = f"https://app.nocodb.com/api/v2/tables/{table_name}/records"
 
 HEADERS = {
     "accept": "application/json",
-    "user-agent": "aksbdc/nocodb-to-gpt-via-api/0.1.0",
+    "user-agent": "aksbdc/nocodb-to-gpt-via-api/0.1.1",
     "xc-token": xc_token,
 }
 

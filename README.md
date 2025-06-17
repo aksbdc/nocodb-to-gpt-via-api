@@ -24,7 +24,7 @@
 1. [Expert Advisor](https://aksbdc.org/about/advisors/)
 1. [General Public](https://alaska.gov/)
 
-### [System Benchmarking](docs/NOTES.md)
+### [System Benchmarking](https://github.com/aksbdc/nocodb-to-gpt-via-api/wiki)
 
 ### [Experimental Design](Makefile)
 
