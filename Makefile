@@ -11,7 +11,7 @@ subscribe:
 	echo "End users, who are advisors, want information on a daily basis."
 	
 publish:
-	echo "This step will typically happen on an approx. ~3 month interval cadence."
+	echo "This step will typically happen on an approx. ~1 month interval cadence."
 
 update:
 	echo "[OPERATIONS] Batch process every week (via GitHub Actions)."
