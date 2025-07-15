@@ -6,11 +6,11 @@ import os
 load_dotenv()
 
 xc_token = os.getenv("API_KEY")
+base_name = os.getenv("BASE_NAME")
 table_name = os.getenv("TABLE_NAME")
-view_id = os.getenv("DEFAULT_VIEW")
 
 OUTPUT = "data/response.json"
-URL = f"https://app.nocodb.com/api/v3/tables/{table_name}/records"
+URL = f"https://app.nocodb.com/api/v3/data/{base_name}/{table_name}/records"
 
 HEADERS = {
     "accept": "application/json",
