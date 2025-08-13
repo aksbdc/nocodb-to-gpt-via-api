@@ -1,5 +1,5 @@
 BIN_NAME=nocodb-to-gpt-via-api
-BIN_VERSION=0.1.1
+BIN_VERSION=0.2.1
 BIN_DATE=$(shell date +%FT%T%z)
 
 # Advisor Tooling @ Alaska SBDC
@@ -20,7 +20,7 @@ debug:
 	ping aksbdc.org
 
 local:
-	llm -m llama3.2:latest 'What are the main jurisdictional funding sources in Alaska?'
+	uvx llm -m gpt-oss:20b 'What are the main jurisdictional funding sources in Alaska?'
 
 test:
 	cat data/response.json | llm -s "What loans do you have available for startups?"
