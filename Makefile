@@ -14,7 +14,7 @@ publish:
 	echo "This step will typically happen on an approx. ~3 month interval cadence."
 
 update:
-	echo "[OPS] Batch process data collection every week (via GitHub Actions)."
+	echo "[OPS] Batch process data collection every week (via `cron` schedule)."
 	
 debug:
 	ping aksbdc.org
