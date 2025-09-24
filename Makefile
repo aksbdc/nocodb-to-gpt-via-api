@@ -1,5 +1,5 @@
 BIN_NAME=nocodb-to-gpt-via-api
-BIN_VERSION=0.2.1
+BIN_VERSION=0.2.2
 BIN_DATE=$(shell date +%FT%T%z)
 
 # Advisor Tooling @ Alaska SBDC
@@ -14,13 +14,14 @@ publish:
 	echo "This step will typically happen on an approx. ~3 month interval cadence."
 
 update:
-	echo "[OPS] Batch process data collection every week (via `cron` schedule)."
+	echo "[OPS] Batch process data collection for contact verification (via email schedule)."
 	
 debug:
 	ping aksbdc.org
 
 local:
-	uvx llm -m gpt-oss:20b 'What are the main jurisdictional funding sources in Alaska?'
+	# https://llm.datasette.io/en/stable/setup.html
+	uvx llm 'What are the main jurisdictional funding sources in Alaska?'
 
 test:
 	cat data/response.json | llm -s "What loans do you have available for startups?"
