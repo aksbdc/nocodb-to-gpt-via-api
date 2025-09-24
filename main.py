@@ -1,5 +1,3 @@
-from ollama import chat
-from ollama import ChatResponse
 from dotenv import load_dotenv
 import requests
 import json
@@ -8,24 +6,19 @@ import os
 load_dotenv()
 
 xc_token = os.getenv("API_KEY")
+base_name = os.getenv("BASE_NAME")
 table_name = os.getenv("TABLE_NAME")
-view_id = os.getenv("DEFAULT_VIEW")
 
-LLM = "llama3.2"
-QUERY = """
-What are the main jurisdictional funding sources in Alaska?
-"""
 OUTPUT = "data/response.json"
-
-URL = f"https://app.nocodb.com/api/v2/tables/{table_name}/records"
+URL = f"https://app.nocodb.com/api/v3/data/{base_name}/{table_name}/records"
 
 HEADERS = {
     "accept": "application/json",
-    "user-agent": "aksbdc/nocodb-to-gpt-via-api/0.1.1",
+    "user-agent": "aksbdc/nocodb-to-gpt-via-api/0.2.1",
     "xc-token": xc_token,
 }
 
-PARAMETERS = {"offset": "0", "limit": "25", "where": "", "viewID": view_id}
+PARAMETERS = {}
 
 
 def project_description():
@@ -35,22 +28,6 @@ def project_description():
     print(">> Hello from nocodb-to-gpt-via-api!")
     print(">> This is a simple script that fetches data from an instance via the API.")
     print(">> The data is then used to train a GPT model.")
-
-
-def sample_usage(question):
-    """
-    Benchmark query analysis from research notes.
-    """
-    response: ChatResponse = chat(
-        model=LLM,
-        messages=[
-            {"role": "user", "content": question},
-        ],
-    )
-
-    output = response.message.content
-
-    return output.json()
 
 
 def fetch_data(location):
